@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/articles_model.dart';
 
 class NewsTile extends StatelessWidget {
-  const NewsTile({
-    super.key,
-  });
+  const NewsTile({required this.articleModel, super.key});
+  final ArticleModel articleModel;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,18 +13,23 @@ class NewsTile extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.asset(
-              'assets/technology.jpeg',
-              height: 200,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
+            child: articleModel.image != null
+                ? Image.asset(
+                    articleModel.image!,
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  )
+                : const Placeholder(
+                    fallbackHeight: 200,
+                    fallbackWidth: double.infinity,
+                  ),
           ),
           const SizedBox(
             height: 8,
           ),
           Text(
-            'Large title should brssssssssssssssssssssssssss',
+            articleModel.title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
@@ -32,11 +38,11 @@ class NewsTile extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Text(
-            'postlist.pragraphpostlist.pragraphpostlist.pragraphpostlist.pragraphpostlist.pragraph',
+            articleModel.Subtitle ?? '',
             maxLines: 2,
             style: const TextStyle(
               color: Colors.grey,
