@@ -1,20 +1,20 @@
 class ArticleModel {
   final String? image;
   final String title;
-  final String? Subtitle;
-  final Source source;
+  final String? subtitle;
+  // final Source? source;
 
   ArticleModel({
-    required this.source,
+    // this.source,
     required this.image,
     required this.title,
-    required this.Subtitle,
+    required this.subtitle,
   });
 }
 
-class Source {
-  final String id;
-  final String name;
+// class Source {
+//   final String id;
+//   final String name;
 
-  Source({required this.id, required this.name});
-}
+//   Source({required this.id, required this.name});
+// }
