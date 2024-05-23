@@ -33,27 +33,14 @@ class HomePage extends StatelessWidget {
             SliverToBoxAdapter(
               child: CategoryListView(),
             ),
-
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 32,
+              ),
+            ),
             NewsListViewBuilder(),
-            // SliverList(
-            //   delegate: SliverChildBuilderDelegate(
-            //     childCount: 10,
-            //     (context, index) {
-            //       return const NewsTile();
-            //     },
-            //   ),
-            // ),
           ],
         ),
-        // child: Column(
-        //   children: [
-        //     CategoryListView(),
-        //     SizedBox(
-        //       height: 20,
-        //     ),
-        //     Expanded(child: NewsListView()),
-        //   ],
-        // ),
       ),
     );
   }
