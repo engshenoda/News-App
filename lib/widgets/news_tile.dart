@@ -42,7 +42,7 @@ class NewsTile extends StatelessWidget {
             height: 8,
           ),
           Text(
-            articleModel.Subtitle ?? '',
+            articleModel.subtitle ?? '',
             maxLines: 2,
             style: const TextStyle(
               color: Colors.grey,
