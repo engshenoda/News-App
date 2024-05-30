@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/models/articles_model.dart';
 
@@ -13,16 +14,31 @@ class NewsTile extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: articleModel.image != null
-                ? Image.network(
-                    articleModel.image!,
+            child: articleModel.image != null && articleModel.image!.isNotEmpty
+                ? CachedNetworkImage(imageUrl: articleModel.image!,
                     height: 200,
                     width: double.infinity,
                     fit: BoxFit.cover,
+                    errorWidget: (context, error, stackTrace) {
+                      return Container(
+                        height: 200,
+                        width: double.infinity,
+                        color: Colors.grey[200],
+                        child: const Icon(
+                          Icons.error,
+                          color: Colors.red,
+                        ),
+                      );
+                    },
                   )
-                : const Placeholder(
-                    fallbackHeight: 200,
-                    fallbackWidth: double.infinity,
+                : Container(
+                    height: 200,
+                    width: double.infinity,
+                    color: Colors.grey[200],
+                    child: const Icon(
+                      Icons.image,
+                      color: Colors.grey,
+                    ),
                   ),
           ),
           const SizedBox(

@@ -3,10 +3,14 @@ class ArticleModel {
   final String title;
   final String? subtitle;
 
-  ArticleModel({
-    required this.image,
-    required this.title,
-    required this.subtitle,
-  });
-}
+  ArticleModel(
+      {required this.image, required this.title, required this.subtitle});
 
+  factory ArticleModel.fromJson(Map<String, dynamic> json) {
+    return ArticleModel(
+      image: json['urlToImage'],
+      title: json['title'],
+      subtitle: json['description'],
+    );
+  }
+}
