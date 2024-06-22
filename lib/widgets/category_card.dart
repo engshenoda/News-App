@@ -17,25 +17,25 @@ class CategoryCard extends StatelessWidget {
       },
       child: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Container(
-          height: 150,
-          width: 150,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(category.imges),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                category.imges,
+                height: 150,
+                width: 150,
+                cacheHeight: 200 ,///decode image at the specified size
+                cacheWidth: 200, ///decode image at the specified size
+                fit: BoxFit.fill,
+              ),
             ),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Center(
-            child: Text(
+            Text(
               category.categoryname,
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
+              style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
             ),
-          ),
+          ],
         ),
       ),
     );
