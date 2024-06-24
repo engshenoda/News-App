@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.lightBlue,
         title: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -38,7 +38,9 @@ class HomePage extends StatelessWidget {
                 height: 32,
               ),
             ),
-            NewsListViewBuilder(category: 'general',),
+            NewsListViewBuilder(
+              category: 'general',
+            ),
           ],
         ),
       ),
