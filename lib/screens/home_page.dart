@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.lightBlue,
         title: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -33,27 +33,16 @@ class HomePage extends StatelessWidget {
             SliverToBoxAdapter(
               child: CategoryListView(),
             ),
-
-            NewsListViewBuilder(),
-            // SliverList(
-            //   delegate: SliverChildBuilderDelegate(
-            //     childCount: 10,
-            //     (context, index) {
-            //       return const NewsTile();
-            //     },
-            //   ),
-            // ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 32,
+              ),
+            ),
+            NewsListViewBuilder(
+              category: 'general',
+            ),
           ],
         ),
-        // child: Column(
-        //   children: [
-        //     CategoryListView(),
-        //     SizedBox(
-        //       height: 20,
-        //     ),
-        //     Expanded(child: NewsListView()),
-        //   ],
-        // ),
       ),
     );
   }

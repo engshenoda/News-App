@@ -2,19 +2,17 @@ class ArticleModel {
   final String? image;
   final String title;
   final String? subtitle;
-  // final Source? source;
+  final String url;
 
-  ArticleModel({
-    // this.source,
-    required this.image,
-    required this.title,
-    required this.subtitle,
-  });
+  ArticleModel( 
+      {required this.url,required this.image, required this.title, required this.subtitle});
+
+  factory ArticleModel.fromJson(Map<String, dynamic> json) {
+    return ArticleModel(
+      url : json['url'],
+      image: json['urlToImage'],
+      title: json['title'],
+      subtitle: json['description'],
+    );
+  }
 }
-
-// class Source {
-//   final String id;
-//   final String name;
-
-//   Source({required this.id, required this.name});
-// }

@@ -5,39 +5,57 @@ import 'package:news_app/services/news_service.dart';
 import 'package:news_app/widgets/news_list_view.dart';
 
 class NewsListViewBuilder extends StatefulWidget {
-  const NewsListViewBuilder({
-    super.key,
-  });
-
+  const NewsListViewBuilder({super.key, required this.category});
+  final String category;
   @override
   State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
 }
 
 class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
-  List<ArticleModel> articles = [];
-  bool isLoading = true;
 
+  dynamic future;
   @override
-  void initState() {
+  initState() {
     super.initState();
-    getGeneralNews();
+    future = NewsServices(Dio()).getNews(
+      catrgory: widget.category,
+    );
   }
 
-  Future<void> getGeneralNews() async {
-    articles = await NewsServices(Dio()).getNews();
-    setState(() {});
-  }
+
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? const SliverToBoxAdapter(
+    return FutureBuilder<List<ArticleModel>>(
+      future: future, //trager
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return NewsListView(
+            articles: snapshot.data!,
+          );
+        } else if (snapshot.hasError) {
+          return const SliverToBoxAdapter(
+            child: ErrorMassege(),
+          );
+        } else {
+          return const SliverToBoxAdapter(
             child: Center(
               child: CircularProgressIndicator(),
             ),
-          )
-        : NewsListView(
-            articles: articles,
           );
+        }
+      },
+    );
+  }
+}
+
+class ErrorMassege extends StatelessWidget {
+  const ErrorMassege({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('oops there was an error, try later');
   }
 }
