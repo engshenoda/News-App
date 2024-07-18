@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/models/list_model.dart';
+import 'package:news_app/models/category_model.dart';
 import 'package:news_app/widgets/category_card.dart';
 
 class CardListView extends StatelessWidget {
@@ -8,7 +8,7 @@ class CardListView extends StatelessWidget {
     required this.items,
   });
 
-  final List<ItemModel> items;
+  final List<CategoryModel> items;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CardListView extends StatelessWidget {
         itemCount: items.length,
         itemBuilder: (context, index) {
           return CategoryCard(
-            item: items[index],
+            category: items[index],
           );
         },
       ),

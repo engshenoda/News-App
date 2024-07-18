@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/models/list_model.dart';
-import 'package:news_app/widgets/card_list_view.dart';
+import 'package:news_app/models/category_model.dart';
+import 'package:news_app/widgets/category_list_view.dart';
 
 class CategoryListView extends StatelessWidget {
   const CategoryListView({super.key});
-  final List<ItemModel> items = const [
-    ItemModel(imges: 'assets/sport.jpg', text: 'sport'),
-    ItemModel(imges: 'assets/technology.jpeg', text: 'business'),
-    ItemModel(imges: 'assets/entertaiment.avif', text: 'entertaiment'),
-    ItemModel(imges: 'assets/natural.jpg', text: 'general'),
-    ItemModel(imges: 'assets/health.avif', text: 'health'),
-    ItemModel(imges: 'assets/sport.jpg', text: 'sport'),
-    ItemModel(imges: 'assets/technology.jpeg', text: 'business'),
-    ItemModel(imges: 'assets/entertaiment.avif', text: 'entertaiment'),
-    ItemModel(imges: 'assets/natural.jpg', text: 'general'),
-    ItemModel(imges: 'assets/health.avif', text: 'health'),
+  final List<CategoryModel> category = const [
+    CategoryModel(imges: 'assets/sport.jpg', categoryname: 'sport'),
+    CategoryModel(imges: 'assets/Business.jpg', categoryname: 'Business'),
+    CategoryModel(
+        imges: 'assets/Entertainment.jpg', categoryname: 'Entertainment'),
+    CategoryModel(imges: 'assets/Health.jpg', categoryname: 'Health'),
+    CategoryModel(imges: 'assets/technology.jpg', categoryname: 'technology'),
+    CategoryModel(imges: 'assets/science.jpg', categoryname: 'science'),
   ];
   @override
   Widget build(BuildContext context) {
-    return CardListView(items: items);
+    return CardListView(items: category);
   }
 }
